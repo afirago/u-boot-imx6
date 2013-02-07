@@ -133,7 +133,7 @@
 #define CONFIG_CMD_SETEXPR
 
 /* Framebuffer and LCD */
-#define CONFIG_VIDEO
+/*#define CONFIG_VIDEO
 #define CONFIG_VIDEO_IPUV3
 #define CONFIG_CFB_CONSOLE
 #define CONFIG_VGA_AS_SINGLE_DEVICE
@@ -145,7 +145,7 @@
 #define CONFIG_VIDEO_LOGO
 #define CONFIG_IPUV3_CLK 260000000
 #define CONFIG_CMD_HDMIDETECT
-#define CONFIG_CONSOLE_MUX
+#define CONFIG_CONSOLE_MUX */
 
 /* allow to overwrite serial and ethaddr */
 #define CONFIG_ENV_OVERWRITE
