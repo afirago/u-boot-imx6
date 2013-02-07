@@ -88,7 +88,7 @@
 #define CONFIG_CMD_FAT
 #define CONFIG_DOS_PARTITION
 
-#define CONFIG_CMD_SATA
+/* #define CONFIG_CMD_SATA */
 /*
  * SATA Configs
  */
