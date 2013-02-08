@@ -190,6 +190,7 @@
 		"echo ; echo serial console at 115200, 8N1 ; echo ; " \
 		"echo details at http://boundarydevices.com/6q_bootscript ; " \
 		"setenv stdout serial\0" \
+	"verify=no\0" \
 	"upgradeu=for dtype in sata mmc ; do " \
 		"for disk in 0 1 ; do ${dtype} dev ${disk} ;" \
 		     "for fs in fat ext2 ; do " \
