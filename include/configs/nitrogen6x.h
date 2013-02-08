@@ -105,6 +105,8 @@
 #define CONFIG_LIBATA
 #endif
 
+#undef CONFIG_CMD_NET
+/*
 #define CONFIG_CMD_PING
 #define CONFIG_CMD_DHCP
 #define CONFIG_CMD_MII
@@ -118,6 +120,7 @@
 #define CONFIG_PHYLIB
 #define CONFIG_PHY_MICREL
 #define CONFIG_PHY_MICREL_KSZ9021
+*/
 
 /* USB Configs */
 #define CONFIG_CMD_USB

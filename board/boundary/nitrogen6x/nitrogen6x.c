@@ -347,6 +347,7 @@ void setup_spi(void)
 }
 #endif
 
+#ifdef CONFIG_PHY_MICREL_KSZ9021
 int board_phy_config(struct phy_device *phydev)
 {
 	/* min rx data delay */
@@ -376,6 +377,7 @@ int board_eth_init(bd_t *bis)
 
 	return 0;
 }
+#endif /* CONFIG_PHY_MICREL_KSZ9021 */
 
 static void setup_buttons(void)
 {
