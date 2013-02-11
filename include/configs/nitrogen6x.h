@@ -139,9 +139,11 @@
 #define CONFIG_MXC_USB_FLAGS	0
 */
 /* Miscellaneous commands */
+/*
 #define CONFIG_CMD_BMODE
 #define CONFIG_CMD_SETEXPR
-
+*/
+ 
 /* Framebuffer and LCD */
 /*#define CONFIG_VIDEO
 #define CONFIG_VIDEO_IPUV3
