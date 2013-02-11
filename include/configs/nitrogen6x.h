@@ -143,7 +143,7 @@
 #define CONFIG_CMD_BMODE
 #define CONFIG_CMD_SETEXPR
 */
- 
+
 /* Framebuffer and LCD */
 /*#define CONFIG_VIDEO
 #define CONFIG_VIDEO_IPUV3
@@ -178,20 +178,10 @@
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
 	"console=ttymxc1\0" \
+	"lpj=7913472\0" \
 	"clearenv=if sf probe || sf probe || sf probe 1 ; then " \
 		"sf erase 0xc0000 0x2000 && " \
 		"echo restored environment to factory default ; fi\0" \
-	"bootcmd=mmc dev 0;" \
-				"fatload " \
-					"mmc 0:1 " \
-					"10008000 " \
-					"/6x_bootscript" \
-					"&& source 10008000 ; " \
-		"setenv stdout serial ; " \
-		"echo ; echo 6x_bootscript not found ; " \
-		"echo ; echo serial console at 115200, 8N1 ; echo ; " \
-		"echo details at http://boundarydevices.com/6q_bootscript ; " \
-		"setenv stdout serial\0" \
 	"verify=no\0" \
 	"upgradeu=for disk in 0 1 ; do mmc dev ${disk} ;" \
 		     	"for fs in fat ext2 ; do " \
@@ -200,6 +190,22 @@
 						"&& source 10008000 ; " \
 				"done ; " \
 	"done\0" \
+	"boot_mmc=mmc dev 0; fatload mmc 0:1 10800000 uImage &&" \
+		" fatload mmc 0:1 12800000 uramdisk.img && bootm 10800000 12800000; \0" \
+	"add_common_bootargs=setenv bootargs ${bootargs} " \
+		"console=ttymxc1,115200 ip=off \0" \
+	"add_root_bootargs=setenv bootargs ${bootargs} " \
+		"root=/dev/mmcblk0p1 rootwait \0" \
+	"add_fast_bootargs=setenv bootargs ${bootargs} " \
+		"initcall_debug loglevel=0 lpj=${lpj} printk.time=1 \0" \
+	"add_video_bootargs=setenv bootargs ${bootargs} " \
+		"video=mxcfb0:dev=hdmi,1280x720M@60,if=RGB24 video=mxcfb1:off video=mxcfb2:off \0" \
+	"fb_bootcmd=run add_common_bootargs; " \
+			   "run add_fast_bootargs; " \
+			   "run add_root_bootargs; " \
+			   "run add_video_bootargs; " \
+			   "run boot_mmc\0" \
+	"bootcmd=run fb_bootcmd\0" \
 
 #define CONFIG_ARP_TIMEOUT     200UL
 
