@@ -191,14 +191,12 @@
 		"echo details at http://boundarydevices.com/6q_bootscript ; " \
 		"setenv stdout serial\0" \
 	"verify=no\0" \
-	"upgradeu=for dtype in sata mmc ; do " \
-		"for disk in 0 1 ; do ${dtype} dev ${disk} ;" \
-		     "for fs in fat ext2 ; do " \
-				"${fs}load ${dtype} ${disk}:1 10008000 " \
-					"/6x_upgrade " \
-					"&& source 10008000 ; " \
-			"done ; " \
-		"done ; " \
+	"upgradeu=for disk in 0 1 ; do mmc dev ${disk} ;" \
+		     	"for fs in fat ext2 ; do " \
+					"${fs}load mmc ${disk}:1 10008000 " \
+						"/6x_upgrade " \
+						"&& source 10008000 ; " \
+				"done ; " \
 	"done\0" \
 
 #define CONFIG_ARP_TIMEOUT     200UL
