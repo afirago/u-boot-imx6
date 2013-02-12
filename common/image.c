@@ -492,7 +492,12 @@ void memmove_wd(void *to, void *from, size_t len, ulong chunksz)
 		len -= tail;
 	}
 #else	/* !(CONFIG_HW_WATCHDOG || CONFIG_WATCHDOG) */
-	memmove(to, from, len);
+	if ((unsigned long)to + len < (unsigned long)from ||
+	   (unsigned long)from + len < (unsigned long) to)
+	    memcpy(to, from, len); 
+	else
+		memmove (to, from, len);
+
 #endif	/* CONFIG_HW_WATCHDOG || CONFIG_WATCHDOG */
 }
 #endif /* !USE_HOSTCC */

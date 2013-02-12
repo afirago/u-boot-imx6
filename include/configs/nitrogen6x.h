@@ -272,4 +272,7 @@
 #define CONFIG_CMD_CACHE
 #endif
 
+#define CONFIG_USE_ARCH_MEMSET
+#define CONFIG_USE_ARCH_MEMCPY
+
 #endif	       /* __CONFIG_H */
